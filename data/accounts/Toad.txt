@@ -1,0 +1,6 @@
+name: Toad
+email: toad@astanait.edu.kz
+role: professor
+passwor(md5): fb23ceb5b78c68623ec52c801670fe0e
+user_id: 6
+date: 29 September 2026, 04:38:23
