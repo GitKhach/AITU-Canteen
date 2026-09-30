@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("header.php");
-$title = "Login";
+$title = "Registration";
 $error = '';
 if(isset($_GET['error']) and $_GET['error'] == 'names'){
     $error = "Name is already taken!";
