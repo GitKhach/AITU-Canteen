@@ -41,6 +41,14 @@ function Names_Check($name){
     }
 }
 
+function Data_To_DB($DBhost, $DBname, $DBusername, $DBpassword, $name, $email, $role, $password){
+    $dsn = "mysql:host=$DBhost;dbname=$DBname;charset=utf8mb4";
+    $pdo = new PDO($dsn, $DBusername, $DBpassword);
+    $sql = "INSERT INTO users  (name, email, role, password) VALUES (?, ?, ?, ?)";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$name, $email, $role, md5($password)]);
+}
+
 session_start();
 $session_id = session_id();
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -49,6 +57,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $role = $_POST['role'];
     $password = $_POST['password'];
     $repeat = $_POST['reppassword'];
+
+    $DBhost = getenv('DB_HOST');
+    $DBname = getenv('DB_NAME');
+    $DBusername = getenv('DB_USER');
+    $DBpassword = getenv('DB_PASSWORD');
+
     //password repeat-check
     if ($password != $repeat){
         header("Location: reg.php?error=passwords");
@@ -57,6 +71,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     Names_Check($name);
 
     Data_To_File($name, $email, $role, $password);
+
+    DataBase_Logic($DBhost, $DBname, $DBusername, $DBpassword, $name, $email, $role, $password);
 
     $_SESSION['username'] = $name;
 
