@@ -10,7 +10,7 @@
         <p>Please choose an option to continue to your account or create a new one.</p>
 
         <div class="button-group">
-            <a href="login.php" class="btn btn-login">Login</a>
+            <a href="login_form.php" class="btn btn-login">Login</a>
             <a href="reg.php" class="btn btn-register">Register</a>
         </div>
     </div>
