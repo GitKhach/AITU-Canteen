@@ -106,3 +106,5 @@
         background-color: #2980b9;
     }
 </style>
+
+//reg_form.php

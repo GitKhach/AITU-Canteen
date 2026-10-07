@@ -1,6 +1,6 @@
 <?php
+//reg.php
 session_start();
-include("header.php");
 $title = "Registration";
 $error = '';
 if(isset($_GET['error']) and $_GET['error'] == 'names'){

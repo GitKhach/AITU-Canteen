@@ -1,4 +1,5 @@
 <?php
+//login.php
 session_start();
 $error='';
 if(isset($_GET['error']) and $_GET['error'] == 'password'){

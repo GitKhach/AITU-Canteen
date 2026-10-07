@@ -1,6 +1,7 @@
 <?php
+//reg_check_post.php
 
-//убери прверку по имени, сделай проверку по почте, начинай делать логин, не забудь сделать проверку почты письмом на почту
+session_start();
 
 $DBhost = getenv('DB_HOST');
 $DBname = getenv('DB_NAME');
@@ -29,8 +30,18 @@ function Data_To_DB($name, $email, $role, $password){
     $stmt->execute([$name, $email, $role, md5($password)]); //хеширование надо будет нормальное сделать
 }
 
-session_start();
-$session_id = session_id();
+function User_data_fetch($email){
+    global $DBhost, $DBname, $DBusername, $DBpassword;
+
+    $dsn = "mysql:host=$DBhost;dbname=$DBname;charset=utf8mb4";
+    $pdo = new PDO($dsn, $DBusername, $DBpassword);
+    $sql = "SELECT id, name, email, role FROM users WHERE email=?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$email]);
+
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -46,7 +57,12 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     Emails_CheckDB($email);
     Data_To_DB($name, $email, $role, $password);
 
-    $_SESSION['username'] = $name;
+    $userArr = User_data_fetch($email);
+    $_SESSION['user_id'] = $userArr['id'];
+    $_SESSION['username'] = $userArr['name'];
+    $_SESSION['email'] = $userArr['email'];
+    $_SESSION['userrole'] = $userArr['role'];
+    $_SESSION['session_id'] = session_id();
 
     header("Location: index.php");
     exit();

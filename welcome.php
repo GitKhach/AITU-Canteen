@@ -1,7 +1,11 @@
 <?php
+//welcome.php
+    session_start();
+    if(!empty($_SESSION)){
+        header("Location: index.php");
+        exit();
+    }
     $title = "Welcome - AITU Portal";
-    include("header.php");
-
 ?>
 
 <div class="welcome-container">

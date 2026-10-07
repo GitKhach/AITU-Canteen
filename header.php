@@ -15,15 +15,37 @@
             margin-bottom: 20px;
             padding: 10px 0;
             border-bottom: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        nav a {
+        nav .nav-links a {
             margin-right: 15px;
             text-decoration: none;
             color: #0066cc;
             font-weight: bold;
         }
-        nav a:hover {
+        nav .nav-links a:hover {
             text-decoration: underline;
+        }
+        .signout-form {
+            display: inline;
+            margin: 0;
+            padding: 0;
+        }
+        .signout-nav-btn {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .signout-nav-btn:hover {
+            background-color: #c0392b;
         }
         footer {
             margin-top: 40px;
@@ -36,6 +58,16 @@
 </head>
 <body>
     <nav>
-        <a href="index.php">Main Page</a>
+        <div class="nav-links">
+            <a href="index.php">Main Page</a>
+        </div>
+        <?php if (!empty($_SESSION['username'])): ?>
+            <form action="index.php" method="GET" class="signout-form">
+                <input type="hidden" name="action" value="signout">
+                <button type="submit" class="signout-nav-btn">Sign Out</button>
+            </form>
+        <?php endif; ?>
     </nav>
     <main>
+
+    //header.php

@@ -1,13 +1,19 @@
 <?php
+//index.php
 session_start();
-include("header.php");
-$title = "AITU Canteen";
-if(empty($_SESSION) or $_SESSION['username'] == ''){
+
+if(empty($_SESSION) or isset($_GET['action']) and $_GET['action'] == 'signout'){
+    session_unset();
+    session_destroy();
     header("Location: welcome.php");
+    exit();
 }
 else{
-    print_r($_SESSION);
-}
+    $title = "AITU Canteen";
+    include("header.php");
 
-include("footer.php");
+    print_r($_SESSION);
+
+    include("footer.php");
+}
 ?>
