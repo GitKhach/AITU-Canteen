@@ -37,7 +37,7 @@ function User_data_fetch($email){
 
     $dsn = "mysql:host=$DBhost;dbname=$DBname;charset=utf8mb4";
     $pdo = new PDO($dsn, $DBusername, $DBpassword);
-    $sql = "SELECT id, name, email, role FROM users WHERE email=?";
+    $sql = "SELECT id, name, email, role, date FROM users WHERE email=?";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$email]);
 
@@ -55,6 +55,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_SESSION['username'] = $userArr['name'];
             $_SESSION['email'] = $userArr['email'];
             $_SESSION['userrole'] = $userArr['role'];
+            $_SESSION['regdate'] = $userArr['date'];
             $_SESSION['session_id'] = session_id();
             header("Location: index.php");
             exit();
