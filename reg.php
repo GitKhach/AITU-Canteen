@@ -5,7 +5,7 @@ session_start();
 $title = "Registration - AITU Canteen";
 $error = '';
 
-if(isset($_GET['error']) and $_GET['error'] == 'names'){
+if(isset($_GET['error']) and $_GET['error'] == 'email'){
     $error = "Email is already taken!\nSign in or try another email.";
 }
 

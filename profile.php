@@ -50,9 +50,6 @@ else{
         <p>Manage your personal information and account details.</p>
     </div>
 
-    <a href="index.php" class="btn btn-secondary">
-        Back to dashboard
-    </a>
 </section>
 
 <section class="profile-grid">
@@ -124,20 +121,16 @@ else{
         </div>
 
         <div class="profile-actions">
-            <button class="btn btn-primary">
+            <a href="#account-settings" class="btn btn-primary">
                 Edit profile
-            </button>
-
-            <button class="btn btn-secondary">
-                Change password
-            </button>
+            </a>
         </div>
 
     </div>
 
 </section>
 
-<section class="profile-card account-settings">
+<section class="profile-card account-settings" id="account-settings">
 
     <div class="card-heading">
         <div>
@@ -157,7 +150,9 @@ else{
             </div>
 
             <button class="btn btn-secondary">
-                Change
+                <a href="change_password.php">
+                    Change
+                </a>
             </button>
         </div>
 
@@ -170,7 +165,9 @@ else{
             </div>
 
             <button class="btn btn-secondary">
-                Change
+                <a href="email_change.php">
+                    Change
+                </a>
             </button>
         </div>
 

@@ -16,7 +16,7 @@ function Emails_CheckDB($email){
     $stmt->execute([$email]);
 
     if($stmt->fetch()){
-        header("Location: reg.php?error=names");
+        header("Location: reg.php?error=email");
         exit();
     }
 }
