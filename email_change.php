@@ -52,19 +52,18 @@
 </header>
 
 <main class="auth-page">
-    <?php if(isset($error)): ?>
-        <div class="error-message">
-            <?= $error ?>
-        </div>
-    <?php endif; ?>
-
-    <?php if(isset($message)): ?>
-        <div class="success-message">
-            <?= $message ?>
-        </div>
-    <?php endif; ?>
     <section class="auth-card">
+        <?php if(isset($error)): ?>
+            <div class="error-message">
+                <?= $error ?>
+            </div>
+        <?php endif; ?>
 
+        <?php if(isset($message)): ?>
+            <div class="success-message">
+                <?= $message ?>
+            </div>
+        <?php endif; ?>
         <div class="auth-header">
             <div class="profile-eyebrow">Account security</div>
 

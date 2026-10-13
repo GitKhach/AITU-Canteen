@@ -7,6 +7,8 @@
     else if(isset($_GET['error']) && $_GET['error'] == "passwordR"){
         $error = "Old password is incorrect, please try again.";
     }
+    if (isset($_GET['message']))
+
 
     if(empty($_SESSION) or isset($_GET['action']) and $_GET['action'] == 'signout'){
         session_unset();
